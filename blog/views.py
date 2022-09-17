@@ -10,7 +10,7 @@ import jwt
 
 @api_view(['GET', 'POST'])
 def blog_list(request, format=None):
-    token = request.COOKIES.get('jwt')
+    token = request.META['HTTP_TOKEN']
 
     if not token:
         raise AuthenticationFailed("Unauthenticated")
