@@ -33,7 +33,7 @@ def blog_list(request, format=None):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def blog_details(request, id, format=None):
-    token = request.COOKIES.get('jwt')
+    token = request.META['HTTP_TOKEN']
 
     if not token:
         raise AuthenticationFailed("Unauthenticated")
